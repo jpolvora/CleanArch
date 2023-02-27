@@ -29,7 +29,9 @@ namespace CleanArch.Tests.UseCases
             var sut = new AuthenticationUseCase(authenticationService);
             sut.UserName = "jpolvora@gmail.com";
             sut.Password = "123456";
+
             var result = await sut.Execute();
+
             Assert.Empty(result.Errors);
             Assert.NotNull(result.Token);
         }
