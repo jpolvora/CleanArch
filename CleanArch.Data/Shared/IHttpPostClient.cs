@@ -7,6 +7,6 @@ namespace CleanArch.Data.Shared
 {
     public interface IHttpPostClient<TResult>
     {
-        Task<TResult> Post();
+        Task<TResult> Post(string url, IDictionary<string, string> headers, IDictionary<string, object> data);
     }
 }

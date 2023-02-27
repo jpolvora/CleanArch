@@ -12,7 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped(typeof(IHttpPostClient<>), typeof(HttpClient<>));
+builder.Services.AddScoped(typeof(IHttpPostClient<>), typeof(DefaultHttpClient<>));
+builder.Services.AddScoped(typeof(IHttpGetClient<>), typeof(DefaultHttpClient<>));
 builder.Services.AddScoped<IAuthentication, RemoteAuthentication>();
 builder.Services.AddScoped<AuthenticationUseCase>();
 
