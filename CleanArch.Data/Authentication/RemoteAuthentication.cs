@@ -9,13 +9,6 @@ namespace CleanArch.Data.Authentication
 {
     public class RemoteAuthentication : IAuthenticationService
     {
-        public IHttpPostClient<AuthenticationUseCaseResult> HttpPostClient { get; }
-        public RemoteAuthentication(IHttpPostClient<AuthenticationUseCaseResult> httpPostClient)
-        {
-            this.HttpPostClient = httpPostClient;
-
-        }
-
         public async Task<string> Login(string userName, string password)
         {
             await Task.Delay(1000);

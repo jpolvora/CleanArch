@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArch.Domain.Shared;
 
 namespace CleanArch.Domain.Auth
 {
-    public class AuthenticationUseCaseResult
+    public class AuthenticationUseCaseResult : IUseCaseResult
     {
         public string Token { get; } = default!;
 

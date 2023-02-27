@@ -5,28 +5,18 @@ using System.Threading.Tasks;
 using Xunit;
 
 using CleanArch.Domain.Auth;
+using CleanArch.Data.Authentication;
 
 namespace CleanArch.Tests.UseCases
 {
     public class AuthenticationUseCaseTests
     {
-        private class FakeAuthenticationService : IAuthenticationService
-        {
-            public Task<string> Login(string userName, string password)
-            {
-                if (string.IsNullOrEmpty(userName)) return Task.FromResult(string.Empty);
-                if (string.IsNullOrEmpty(password)) return Task.FromResult(string.Empty);
-
-                return Task.FromResult(Guid.NewGuid().ToString());
-            }
-        }
-
         [Fact]
-        public async Task ShouldSucceed()
+        public async Task ShouldSucceedWhenUsernameAndPasswordAreSame()
         {
-            var authenticationService = new FakeAuthenticationService();
+            var authenticationService = new RemoteAuthentication();
             var sut = new AuthenticationUseCase(authenticationService);
-            sut.SetCredentials("jpolvora@gmail.com", "123456");
+            sut.SetCredentials("jpolvora@gmail.com", "jpolvora@gmail.com");
 
             var result = await sut.Execute();
 
@@ -35,13 +25,49 @@ namespace CleanArch.Tests.UseCases
         }
 
         [Fact]
-        public async Task ShouldFail()
+        public async Task ShouldFailWhenUsernameAndPasswordAreNotSame()
         {
-            var authenticationService = new FakeAuthenticationService();
+            var authenticationService = new RemoteAuthentication();
+            var sut = new AuthenticationUseCase(authenticationService);
+            sut.SetCredentials("jpolvora@gmail.com", "123456");
+
+            var result = await sut.Execute();
+
+            Assert.True(result.Errors.Count == 1);
+
+            Assert.True(string.IsNullOrEmpty(result.Token));
+        }
+
+        [Fact]
+        public async Task ShouldFailIfPasswordIsEmpty()
+        {
+            var authenticationService = new RemoteAuthentication();
             var sut = new AuthenticationUseCase(authenticationService);
             sut.SetCredentials("jpolvora@gmail.com", "");
             var result = await sut.Execute();
             Assert.True(result.Errors.Count == 1);
+            Assert.True(string.IsNullOrEmpty(result.Token));
+        }
+
+        [Fact]
+        public async Task ShouldFailIfUsernameIsEmpty()
+        {
+            var authenticationService = new RemoteAuthentication();
+            var sut = new AuthenticationUseCase(authenticationService);
+            sut.SetCredentials("", "123456");
+            var result = await sut.Execute();
+            Assert.True(result.Errors.Count == 1);
+            Assert.True(string.IsNullOrEmpty(result.Token));
+        }
+
+        [Fact]
+        public async Task ShouldFailIfUsernameAndPasswordNotProvided()
+        {
+            var authenticationService = new RemoteAuthentication();
+            var sut = new AuthenticationUseCase(authenticationService);
+            sut.SetCredentials("", "");
+            var result = await sut.Execute();
+            Assert.True(result.Errors.Count == 2);
             Assert.True(string.IsNullOrEmpty(result.Token));
         }
     }
