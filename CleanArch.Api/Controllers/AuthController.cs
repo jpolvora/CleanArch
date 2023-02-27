@@ -26,12 +26,9 @@ namespace CleanArch.Api.Controllers
             _useCase.SetCredentials(credentials.UserName, credentials.Password);
 
             var result = await _useCase.Execute();
-            if (result.Errors.Any())
-            {
-                return BadRequest(new AuthResponse(result.Error, result.Token));
-            }
-
-            return Ok(new AuthResponse(string.Empty, result.Token));
+            return result.Errors.Any()
+                ? BadRequest(AuthResponse.Fail(result.Errors))
+                : Ok(AuthResponse.Success(result.Token));
         }
     }
 }

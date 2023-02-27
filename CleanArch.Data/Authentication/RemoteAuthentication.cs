@@ -9,8 +9,8 @@ namespace CleanArch.Data.Authentication
 {
     public class RemoteAuthentication : IAuthentication
     {
-        public IHttpPostClient<AuthenticationResult> HttpPostClient { get; }
-        public RemoteAuthentication(IHttpPostClient<AuthenticationResult> httpPostClient)
+        public IHttpPostClient<AuthenticationUseCaseResult> HttpPostClient { get; }
+        public RemoteAuthentication(IHttpPostClient<AuthenticationUseCaseResult> httpPostClient)
         {
             this.HttpPostClient = httpPostClient;
 
