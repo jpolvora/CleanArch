@@ -24,3 +24,5 @@ dotnet add CleanArch.Tests/CleanArch.Tests.csproj reference CleanArch.Api/CleanA
 
 dotnet add CleanArch.Data/CleanArch.Data.csproj reference CleanArch.Domain/CleanArch.Domain.csproj
 dotnet add CleanArch.Infra/CleanArch.Infra.csproj reference CleanArch.Domain/CleanArch.Domain.csproj
+
+dotnet add CleanArch.Infra/CleanArch.Infra.csproj reference CleanArch.Data/CleanArch.Data.csproj

@@ -15,10 +15,12 @@ namespace CleanArch.Api.Controllers
         public AuthController(AuthenticationUseCase useCase)
         {
             this.useCase = useCase;
-
         }
 
-        public async Task<IActionResult> Get([FromBody] string userName, string password)
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Run(string userName, string password)
         {
             useCase.UserName = userName;
             useCase.Password = password;

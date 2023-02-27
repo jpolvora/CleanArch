@@ -16,9 +16,10 @@ namespace CleanArch.Data.Authentication
 
         }
 
-        public Task<string> Execute(string userName, string password)
+        public async Task<string> Execute(string userName, string password)
         {
-            throw new NotImplementedException();
+            await Task.Delay(1000);
+            return userName == password ? Guid.NewGuid().ToString() : "";
         }
     }
 }
