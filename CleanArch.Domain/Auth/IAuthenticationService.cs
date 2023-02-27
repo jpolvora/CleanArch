@@ -6,11 +6,11 @@ using CleanArch.Domain.Shared;
 
 namespace CleanArch.Domain.Auth
 {
-    public interface IAuthentication
+    public interface IAuthenticationService
     {
         ///
         ///Retorna o token para acesso as API's 
         ///
-        Task<string> Execute(string userName, string password);
+        Task<string> Login(string userName, string password);
     }
 }

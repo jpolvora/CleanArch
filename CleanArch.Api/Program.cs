@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped(typeof(IHttpPostClient<>), typeof(DefaultHttpClient<>));
 builder.Services.AddScoped(typeof(IHttpGetClient<>), typeof(DefaultHttpClient<>));
-builder.Services.AddScoped<IAuthentication, RemoteAuthentication>();
+builder.Services.AddScoped<IAuthenticationService, RemoteAuthentication>();
 builder.Services.AddScoped<AuthenticationUseCase>();
 
 var app = builder.Build();

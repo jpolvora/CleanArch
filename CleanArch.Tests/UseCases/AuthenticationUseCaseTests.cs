@@ -10,9 +10,9 @@ namespace CleanArch.Tests.UseCases
 {
     public class AuthenticationUseCaseTests
     {
-        private class FakeAuthenticationService : IAuthentication
+        private class FakeAuthenticationService : IAuthenticationService
         {
-            public Task<string> Execute(string userName, string password)
+            public Task<string> Login(string userName, string password)
             {
                 if (string.IsNullOrEmpty(userName)) return Task.FromResult(string.Empty);
                 if (string.IsNullOrEmpty(password)) return Task.FromResult(string.Empty);

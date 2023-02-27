@@ -7,7 +7,7 @@ using CleanArch.Domain.Auth;
 
 namespace CleanArch.Data.Authentication
 {
-    public class RemoteAuthentication : IAuthentication
+    public class RemoteAuthentication : IAuthenticationService
     {
         public IHttpPostClient<AuthenticationUseCaseResult> HttpPostClient { get; }
         public RemoteAuthentication(IHttpPostClient<AuthenticationUseCaseResult> httpPostClient)
@@ -16,7 +16,7 @@ namespace CleanArch.Data.Authentication
 
         }
 
-        public async Task<string> Execute(string userName, string password)
+        public async Task<string> Login(string userName, string password)
         {
             await Task.Delay(1000);
             return userName == password ? Guid.NewGuid().ToString() : "";

@@ -6,16 +6,16 @@ using CleanArch.Domain.Shared;
 
 namespace CleanArch.Domain.Auth
 {
-    public class AuthenticationUseCase : IUseCase<AuthenticationUseCaseResult>
+    public sealed class AuthenticationUseCase : IUseCase<AuthenticationUseCaseResult>
     {
-        private readonly IAuthentication _authentication;
+        private readonly IAuthenticationService _authenticationService;
 
         public string UserName { get; private set; } = default!;
         public string Password { get; private set; } = default!;
 
-        public AuthenticationUseCase(IAuthentication authentication)
+        public AuthenticationUseCase(IAuthenticationService authenticationService)
         {
-            _authentication = authentication;
+            _authenticationService = authenticationService;
         }
 
         public void SetCredentials(string userName, string password)
@@ -39,9 +39,9 @@ namespace CleanArch.Domain.Auth
                 errors.Add("Informe a senha!");
             }
 
-            if (errors.Count == 0)
+            if (!errors.Any())
             {
-                token = await _authentication.Execute(UserName!, Password!);
+                token = await _authenticationService.Login(UserName!, Password!);
                 if (string.IsNullOrWhiteSpace(token))
                 {
                     errors.Add("Usuário e/ou Senha inválidos");
