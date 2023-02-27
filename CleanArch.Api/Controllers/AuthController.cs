@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArch.Api.Models;
 using CleanArch.Domain.Auth;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,26 +12,28 @@ namespace CleanArch.Api.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly AuthenticationUseCase useCase;
+        private readonly AuthenticationUseCase _useCase;
         public AuthController(AuthenticationUseCase useCase)
         {
-            this.useCase = useCase;
+            _useCase = useCase;
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Run(string userName, string password)
+        public async Task<IActionResult> Run([FromBody] AuthRequest credentials)
         {
-            useCase.UserName = userName;
-            useCase.Password = password;
-            var result = await useCase.Execute();
+            _useCase.SetCredentials(credentials.UserName, credentials.Password);
+
+            var result = await _useCase.Execute();
             if (result.Errors.Any())
             {
-                return BadRequest();
+                return BadRequest(result.Errors.Select(s => s));
             }
 
-            return Ok(result.Token);
+            var response = new AuthResponse(result.Token);
+
+            return Ok(response);
         }
     }
 }
