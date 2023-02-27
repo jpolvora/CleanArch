@@ -28,12 +28,10 @@ namespace CleanArch.Api.Controllers
             var result = await _useCase.Execute();
             if (result.Errors.Any())
             {
-                return BadRequest(result.Errors.Select(s => s));
+                return BadRequest(new AuthResponse(result.Error, result.Token));
             }
 
-            var response = new AuthResponse(result.Token);
-
-            return Ok(response);
+            return Ok(new AuthResponse(string.Empty, result.Token));
         }
     }
 }
