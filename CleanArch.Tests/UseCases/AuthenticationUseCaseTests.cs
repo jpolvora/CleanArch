@@ -8,7 +8,6 @@ using CleanArch.Domain.Auth;
 
 namespace CleanArch.Tests.UseCases
 {
-
     public class AuthenticationUseCaseTests
     {
         private class FakeAuthenticationService : IAuthentication
@@ -27,8 +26,7 @@ namespace CleanArch.Tests.UseCases
         {
             var authenticationService = new FakeAuthenticationService();
             var sut = new AuthenticationUseCase(authenticationService);
-            sut.UserName = "jpolvora@gmail.com";
-            sut.Password = "123456";
+            sut.SetCredentials("jpolvora@gmail.com", "123456");
 
             var result = await sut.Execute();
 
@@ -41,7 +39,7 @@ namespace CleanArch.Tests.UseCases
         {
             var authenticationService = new FakeAuthenticationService();
             var sut = new AuthenticationUseCase(authenticationService);
-            sut.UserName = "jpolvora@gmail.com";
+            sut.SetCredentials("jpolvora@gmail.com", "");
             var result = await sut.Execute();
             Assert.True(result.Errors.Count == 1);
             Assert.True(string.IsNullOrEmpty(result.Token));

@@ -26,3 +26,9 @@ dotnet add CleanArch.Data/CleanArch.Data.csproj reference CleanArch.Domain/Clean
 dotnet add CleanArch.Infra/CleanArch.Infra.csproj reference CleanArch.Domain/CleanArch.Domain.csproj
 
 dotnet add CleanArch.Infra/CleanArch.Infra.csproj reference CleanArch.Data/CleanArch.Data.csproj
+
+cd CleanArch.Infra
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+cd ..
+
+dotnet tool install --global dotnet-ef

@@ -5,17 +5,20 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Domain.Auth
 {
-    public class AuthenticationResult
+    public class AuthenticationUseCaseResult
     {
-        public string Token { get; }
+        public string Token { get; } = default!;
 
-        public List<string> Errors { get; }
+        public List<string> Errors { get; } = new();
 
-        public AuthenticationResult(List<string> errors, string token)
+        public AuthenticationUseCaseResult()
         {
-            Errors = errors;
-            Token = token;
         }
 
+        public AuthenticationUseCaseResult(string token, List<string> errors)
+        {
+            Token = token;
+            Errors = errors;
+        }
     }
 }
