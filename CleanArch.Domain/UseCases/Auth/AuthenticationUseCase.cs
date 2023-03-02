@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CleanArch.Domain.Shared;
 
-namespace CleanArch.Domain.Auth
+namespace CleanArch.Domain.UseCases.Auth
 {
     public sealed class AuthenticationUseCase : IUseCase<AuthenticationUseCaseResult>
     {
@@ -20,8 +20,8 @@ namespace CleanArch.Domain.Auth
 
         public void SetCredentials(string userName, string password)
         {
-            UserName = userName;
-            Password = password;
+            UserName = userName ?? string.Empty;
+            Password = password ?? string.Empty;
         }
 
         public async Task<AuthenticationUseCaseResult> Execute()

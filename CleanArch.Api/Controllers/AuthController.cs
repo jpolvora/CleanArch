@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArch.Api.Models;
-using CleanArch.Domain.Auth;
+using CleanArch.Domain.UseCases.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArch.Api.Controllers
@@ -18,10 +18,10 @@ namespace CleanArch.Api.Controllers
             _useCase = useCase;
         }
 
-        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Run([FromBody] AuthRequest credentials)
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] AuthRequest credentials)
         {
             _useCase.SetCredentials(credentials.UserName, credentials.Password);
 

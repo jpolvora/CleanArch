@@ -1,6 +1,5 @@
-using CleanArch.Data.Authentication;
-using CleanArch.Data.Shared;
-using CleanArch.Domain.Auth;
+using CleanArch.Data;
+using CleanArch.Domain;
 using CleanArch.Infra;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped(typeof(IHttpPostClient<>), typeof(DefaultHttpClient<>));
-builder.Services.AddScoped(typeof(IHttpGetClient<>), typeof(DefaultHttpClient<>));
-builder.Services.AddScoped<IAuthenticationService, RemoteAuthentication>();
-builder.Services.AddScoped<AuthenticationUseCase>();
+builder.Services.ConfigureData();
+builder.Services.ConfigureInfrastructure();
+builder.Services.AddDomainUseCases();
 
 var app = builder.Build();
 

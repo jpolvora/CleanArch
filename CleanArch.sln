@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Infra", "CleanArc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Tests", "CleanArch.Tests\CleanArch.Tests.csproj", "{B15E06F2-F1D0-434B-AD8B-F7FA0A002360}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Shared", "CleanArch.Shared\CleanArch.Shared.csproj", "{1AF06A1D-CC02-472D-BDEF-20A2E4FC8125}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{B15E06F2-F1D0-434B-AD8B-F7FA0A002360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B15E06F2-F1D0-434B-AD8B-F7FA0A002360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B15E06F2-F1D0-434B-AD8B-F7FA0A002360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF06A1D-CC02-472D-BDEF-20A2E4FC8125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF06A1D-CC02-472D-BDEF-20A2E4FC8125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF06A1D-CC02-472D-BDEF-20A2E4FC8125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF06A1D-CC02-472D-BDEF-20A2E4FC8125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

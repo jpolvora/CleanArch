@@ -4,5 +4,6 @@
         "titleBar.activeBackground": "#1C4261",
         "titleBar.activeForeground": "#F9FCFD"
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.fontSize": 13
 }

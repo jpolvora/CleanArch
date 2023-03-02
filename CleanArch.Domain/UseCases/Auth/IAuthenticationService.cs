@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CleanArch.Domain.Shared;
 
-namespace CleanArch.Domain.Auth
+namespace CleanArch.Domain.UseCases.Auth
 {
     public interface IAuthenticationService
     {

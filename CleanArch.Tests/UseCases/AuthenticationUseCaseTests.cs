@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
-
-using CleanArch.Domain.Auth;
-using CleanArch.Data.Authentication;
+using CleanArch.Domain.UseCases.Auth;
+using CleanArch.Data.Auth;
 
 namespace CleanArch.Tests.UseCases
 {

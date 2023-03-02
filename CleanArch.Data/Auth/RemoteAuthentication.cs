@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArch.Data.Shared;
-using CleanArch.Domain.Auth;
+using CleanArch.Domain.UseCases.Auth;
 
-namespace CleanArch.Data.Authentication
+namespace CleanArch.Data.Auth
 {
     public class RemoteAuthentication : IAuthenticationService
     {
