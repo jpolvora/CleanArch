@@ -9,7 +9,7 @@ namespace CleanArch.Domain
 {
     public static class Start
     {
-        public static IServiceCollection AddDomainUseCases(this IServiceCollection services)
+        public static IServiceCollection AddDomainLayer(this IServiceCollection services)
         {
             return services.AddScoped<AuthenticationUseCase>();
         }

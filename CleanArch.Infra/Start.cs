@@ -10,7 +10,7 @@ namespace CleanArch.Infra
 {
     public static class Start
     {
-        public static void ConfigureInfrastructure(this IServiceCollection serviceCollection)
+        public static void AddInfrastructureLayer(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped(typeof(IHttpPostClient<>), typeof(DefaultHttpClient<>));
             serviceCollection.AddScoped(typeof(IHttpPostClient<>), typeof(DefaultHttpClient<>));

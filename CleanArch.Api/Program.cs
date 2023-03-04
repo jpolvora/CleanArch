@@ -14,9 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.ConfigureData();
-builder.Services.ConfigureInfrastructure();
-builder.Services.AddDomainUseCases();
+builder.Services.AddDataLayer();
+builder.Services.AddInfrastructureLayer();
+builder.Services.AddDomainLayer();
 
 var app = builder.Build();
 

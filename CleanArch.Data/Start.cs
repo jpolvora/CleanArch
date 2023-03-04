@@ -10,7 +10,7 @@ namespace CleanArch.Data
 {
     public static class Start
     {
-        public static void ConfigureData(this IServiceCollection serviceCollection)
+        public static void AddDataLayer(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IAuthenticationService, RemoteAuthentication>();
         }
